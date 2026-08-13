@@ -1,0 +1,18 @@
+.kc-social-twitch {
+    display: inline-block;
+    width: 1.5rem;
+    height: 1.5rem;
+    background: center / contain no-repeat url("../img/twitch-idp-logo.svg");
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+@media (forced-colors: active) {
+    .kc-social-twitch {
+        background-image: none;
+        text-indent: 0;
+        width: auto;
+        overflow: visible;
+    }
+}

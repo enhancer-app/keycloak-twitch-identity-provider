@@ -88,12 +88,6 @@ tasks.test {
 
 if (withSmoke) tasks.test { dependsOn(tasks.jar) }
 
-tasks.register("verify") {
-    group = LifecycleBasePlugin.VERIFICATION_GROUP
-    description = "Runs all Gradle verification tasks. Equivalent to Maven verify."
-    dependsOn(tasks.check)
-}
-
 publishing {
     publications {
         create<MavenPublication>("mavenJava") {
