@@ -26,7 +26,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: keycloak-twitch-identity-provider
-          path: build/libs/keycloak-twitch.jar
+          path: build/libs/keycloak-twitch-identity-provider-*.jar
           if-no-files-found: error
 
   smoke:

@@ -6,7 +6,7 @@ the application's credentials, authorization codes, tokens or real profile data.
 ## 1. Build and start Keycloak
 
 ```bash
-./gradlew clean jar
+./gradlew clean prepareDockerProvider
 docker build -t keycloak-twitch:local .
 docker run --rm -p 3010:8080 \
   -e KC_BOOTSTRAP_ADMIN_USERNAME=admin \

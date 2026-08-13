@@ -36,20 +36,20 @@ deployment topology, backend service, credential, or hosted-service assumption.
 | Java runtime / build toolchain | 17 |
 | Keycloak compile and smoke-test target | **26.5.2** |
 | Provider artifact | `io.github.enhancer-app:keycloak-twitch-identity-provider` |
-| Deployable provider JAR | `keycloak-twitch.jar` |
+| Release provider JAR | `keycloak-twitch-identity-provider-<version>.jar` |
 
 Keycloak 26.5.2 is the only guaranteed compatibility target. Newer versions may work, but must
 pass smoke and real-login testing before deployment. See [docs/COMPATIBILITY.md](docs/COMPATIBILITY.md).
 
 ## Install
 
-1. Download `keycloak-twitch.jar` from a GitHub release or build it locally.
+1. Download the versioned provider JAR, `keycloak-twitch-identity-provider-<version>.jar`, from a GitHub release or build it locally.
 2. Copy it exactly to `/opt/keycloak/providers/keycloak-twitch.jar`.
 3. For optimized Keycloak deployments, run `kc.sh build`.
 4. Start or restart Keycloak.
 
 ```bash
-cp keycloak-twitch.jar /opt/keycloak/providers/keycloak-twitch.jar
+cp keycloak-twitch-identity-provider-<version>.jar /opt/keycloak/providers/keycloak-twitch.jar
 /opt/keycloak/bin/kc.sh build
 /opt/keycloak/bin/kc.sh start
 ```
@@ -64,7 +64,7 @@ The included Dockerfile uses `quay.io/keycloak/keycloak:26.5.2`, installs the JA
 path, and runs Keycloak augmentation:
 
 ```bash
-./gradlew clean jar
+./gradlew clean prepareDockerProvider
 docker build -t keycloak-twitch:local .
 docker run --rm -p 3010:8080 \
   -e KC_BOOTSTRAP_ADMIN_USERNAME=admin \

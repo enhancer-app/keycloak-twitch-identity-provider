@@ -1,5 +1,5 @@
 FROM quay.io/keycloak/keycloak:26.5.2 AS builder
-COPY build/libs/keycloak-twitch.jar /opt/keycloak/providers/keycloak-twitch.jar
+COPY build/docker/keycloak-twitch.jar /opt/keycloak/providers/keycloak-twitch.jar
 RUN /opt/keycloak/bin/kc.sh build
 
 FROM quay.io/keycloak/keycloak:26.5.2

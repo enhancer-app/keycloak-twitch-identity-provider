@@ -61,7 +61,7 @@ tasks.withType<Javadoc>().configureEach {
 }
 
 tasks.jar {
-    archiveFileName.set("keycloak-twitch.jar")
+    archiveBaseName.set("keycloak-twitch-identity-provider")
     manifest {
         attributes(
             "Implementation-Title" to "keycloak-twitch-identity-provider",
@@ -69,6 +69,17 @@ tasks.jar {
             "Keycloak-Target-Version" to keycloakVersion,
         )
     }
+}
+
+/**
+ * Creates the stable file name expected by the Docker image without publishing a second JAR.
+ * GitHub Releases contain only the versioned provider, sources and Javadoc artifacts.
+ */
+val prepareDockerProvider = tasks.register<Copy>("prepareDockerProvider") {
+    dependsOn(tasks.jar)
+    from(tasks.jar.flatMap { it.archiveFile })
+    into(layout.buildDirectory.dir("docker"))
+    rename { "keycloak-twitch.jar" }
 }
 
 val withSmoke = providers.gradleProperty("withSmoke").isPresent

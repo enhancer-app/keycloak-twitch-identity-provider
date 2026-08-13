@@ -12,6 +12,7 @@ Use the included Gradle Wrapper; a globally installed Gradle is not required.
 ```bash
 ./gradlew clean verify
 ./gradlew test -PwithSmoke
+./gradlew prepareDockerProvider
 docker build -t keycloak-twitch:local .
 ```
 

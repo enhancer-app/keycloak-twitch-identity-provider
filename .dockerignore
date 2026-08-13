@@ -3,6 +3,6 @@
 .gradle
 build/**
 !build/
-!build/libs/
-!build/libs/keycloak-twitch.jar
+!build/docker/
+!build/docker/keycloak-twitch.jar
 src/test
