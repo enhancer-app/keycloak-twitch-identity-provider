@@ -1,0 +1,8 @@
+.git
+.github
+.gradle
+build/**
+!build/
+!build/libs/
+!build/libs/keycloak-twitch.jar
+src/test

@@ -1,0 +1,8 @@
+# Example only: use your deployment's normal Keycloak service/configuration.
+services:
+  keycloak:
+    image: quay.io/keycloak/keycloak:26.5.2
+    command: start-dev
+    ports: ["3010:8080"]
+    volumes:
+      - ./providers/keycloak-twitch.jar:/opt/keycloak/providers/keycloak-twitch.jar:ro
