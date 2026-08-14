@@ -34,6 +34,12 @@ public class TwitchIdentityProviderFactory extends AbstractIdentityProviderFacto
                 .property().name("tokenUrl").label("Token URL").type(ProviderConfigProperty.STRING_TYPE)
                 .defaultValue(TwitchEndpoints.TOKEN_URL).add()
                 .property().name("userInfoUrl").label("Profile URL").type(ProviderConfigProperty.STRING_TYPE)
-                .defaultValue(TwitchEndpoints.PROFILE_URL).add().build();
+                .defaultValue(TwitchEndpoints.PROFILE_URL).add()
+                .property().name(TwitchIdentityProviderConfig.USERNAME_STRATEGY).label("Username strategy")
+                .type(ProviderConfigProperty.LIST_TYPE)
+                .options(TwitchUsernameStrategy.STABLE_ID_PREFIX.getConfigValue(), TwitchUsernameStrategy.PROVIDER_USERNAME.getConfigValue())
+                .defaultValue(TwitchUsernameStrategy.STABLE_ID_PREFIX.getConfigValue()).add()
+                .property().name(TwitchIdentityProviderConfig.USERNAME_PREFIX).label("Username prefix")
+                .type(ProviderConfigProperty.STRING_TYPE).defaultValue(TwitchUsernameStrategy.DEFAULT_PREFIX).add().build();
     }
 }

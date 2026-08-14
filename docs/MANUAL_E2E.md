@@ -48,7 +48,7 @@ https://<keycloak-host>/realms/<realm>/broker/<alias>/endpoint
 4. Confirm Keycloak returns to the application through its standard first-login flow.
 5. Inspect the user’s provider link: subject must be Twitch `data[0].id`.
 6. Inspect attributes `twitch.id`, `twitch.login`, `twitch.display_name`,
-   `twitch.profile_image_url` and `picture` where Twitch supplied values.
+   `twitch.email` and `twitch.profile_image_url` where Twitch supplied values.
 
 ## 5. Negative checks
 

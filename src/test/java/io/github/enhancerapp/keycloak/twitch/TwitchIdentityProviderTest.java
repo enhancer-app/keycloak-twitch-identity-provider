@@ -51,19 +51,19 @@ class TwitchIdentityProviderTest {
             {"data":[{"id":"7","login":"streamer","display_name":"Streamer",
             "email":"a@example.test","profile_image_url":"https://cdn.example/a.png"}]}"""));
         assertThat(user.getId()).isEqualTo("7");
-        assertThat(user.getUsername()).isEqualTo("streamer");
-        assertThat(user.getModelUsername()).isEqualTo("streamer");
+        assertThat(user.getUsername()).isEqualTo("twitch-7");
+        assertThat(user.getModelUsername()).isEqualTo("twitch-7");
         assertThat(user.getEmail()).isEqualTo("a@example.test");
         assertThat(user.getUserAttribute("twitch.id")).isEqualTo("7");
         assertThat(user.getUserAttribute("twitch.login")).isEqualTo("streamer");
         assertThat(user.getUserAttribute("twitch.display_name")).isEqualTo("Streamer");
         assertThat(user.getUserAttribute("twitch.profile_image_url")).isEqualTo("https://cdn.example/a.png");
-        assertThat(user.getUserAttribute("picture")).isEqualTo("https://cdn.example/a.png");
+        assertThat(user.getUserAttribute("twitch.email")).isEqualTo("a@example.test");
     }
 
     @Test void omitsOptionalMappingsWhenTwitchDoesNotSupplyThem() throws Exception {
         BrokeredIdentityContext user = new ExposedProvider().map(JSON.readTree("{\"data\":[{\"id\":\"7\",\"login\":\"streamer\"}]}"));
         assertThat(user.getEmail()).isNull();
-        assertThat(user.getUserAttribute("picture")).isNull();
+        assertThat(user.getUserAttribute("twitch.profile_image_url")).isNull();
     }
 }

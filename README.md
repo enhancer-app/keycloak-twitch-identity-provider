@@ -169,10 +169,10 @@ Twitch returns a user in `data[0]`:
 | Twitch field | Keycloak use | Identity-critical? |
 | --- | --- | --- |
 | `data[0].id` | Federated identity subject / broker user ID; `twitch.id` attribute | **Yes. The only identity key.** |
-| `data[0].login` | Keycloak username and model username; `twitch.login` | No; profile data. |
+| `data[0].login` | `twitch.login`; source for optional `provider-username` strategy | No; profile data. |
 | `data[0].display_name` | `twitch.display_name` attribute | No; mutable. |
-| `data[0].email` | Keycloak email when supplied | No; optional. |
-| `data[0].profile_image_url` | `twitch.profile_image_url` and `picture` attributes when supplied | No; optional and mutable. |
+| `data[0].email` | Keycloak email and `twitch.email` when supplied | No; optional. |
+| `data[0].profile_image_url` | `twitch.profile_image_url` when supplied | No; optional and mutable. |
 
 The provider never identifies or links accounts using email, login, display name, or avatar. Realm
 first-login and account-linking policies remain entirely under Keycloak administrator control.
